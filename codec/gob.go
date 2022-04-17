@@ -40,7 +40,7 @@ func (g *GobCodec) ReadBody(body interface{}) error {
 
 func (g *GobCodec) Write(header *Header, body interface{}) (err error) {
 	defer func() {
-		_ = g.buf.Flush()
+		err = g.buf.Flush()
 		if nil != err {
 			_ = g.Close()
 		}
